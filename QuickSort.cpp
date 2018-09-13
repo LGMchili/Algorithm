@@ -3,7 +3,7 @@
 using namespace std;
 
 int partition(vector<int>& A, int l, int r){
-    int i = l - 1;
+    int i = l - 1; // i is the partition cursor
     int x = A[r];
     for(int j = l; j < r; j++){
         if(A[j] < x){
@@ -12,7 +12,7 @@ int partition(vector<int>& A, int l, int r){
         }
     }
     swap(A[r], A[i+1]);
-    return i + 1;
+    return i + 1; // index of A[r]
 }
 
 void quickSort(vector<int>& A, int l, int r){
