@@ -1,16 +1,29 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 class base{
 public:
+    base(){
+        cout << "construction of base" << endl;
+    }
+    virtual ~base(){
+        cout << "destruction of base" << endl;
+    }
     virtual void print(){
         cout << "base" << endl;
     }
 };
 
 class derive: public base{
-    void print() {
+public:
+    derive(){
+        cout << "construction of derive" << endl;
+    }
+    ~derive(){
+        cout << "destruction of derive" << endl;
+    }
+    virtual void print() {
         cout << "derive" << endl;
     }
 };
@@ -20,11 +33,9 @@ void foo(base& ob){
 }
 
 int main(){
-    base a;
-    derive b;
-    cout << "base class output: ";
-    foo(a);
-    cout << "derive class output: ";
-    foo(b);
+    base* a = new base();
+    derive* b = new derive();
+    delete a;
+    delete b;
     return 0;
 }
