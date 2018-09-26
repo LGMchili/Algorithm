@@ -19,10 +19,11 @@ int mystoi(string s){
 int myatoi(const char* s){
     int sign = 1, num = 0, index = 0;
     while(*(s + index)){
-        if(*(s + index) == '-')
+        char ch = *(s + index);
+        if(ch == '-')
             sign = -1;
-        if('0' <= *(s + index) && *(s + index) <= '9'){
-            num = num * 10 + (*(s + index) - '0');
+        if('0' <= ch && ch <= '9'){
+            num = num * 10 + (ch - '0');
         }
         index++;
     }
