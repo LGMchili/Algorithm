@@ -5,24 +5,27 @@
 #include <queue>
 using namespace std;
 struct compare{
-    bool operator()(const int& a, const int& b) const {
+    bool operator()(pair<char, int>& a, pair<char, int>& b) const {
         return a > b;
     }
 };
-int main(){
-    // TODO:
-    string s = "aaaabbbbccccddddd";
-    int k = 2, maxVal = 0;
+
+string seatArrangement(string s, int k){
+    vector<pair<char, int>> sorted;
     string res;
-    map<char, int, compare> mp;
+    int  maxVal = 0;
+    map<char, int> mp;
     priority_queue<int> pq;
     for(auto c : s){
         mp[c]++;
         maxVal = max(maxVal, mp[c]);
     }
     for(auto& val : mp){
-        cout << val.second << " " << val.first << endl;
+        sorted.push_back(val);
     }
+    sort(sorted.begin(), sorted.end(), [](pair<char, int>& a, pair<char, int>& b){
+        return a.second > b.second;
+    });
     int size = mp.size();
     while(size > 0){
         if(size <= k && maxVal > 1){
@@ -30,16 +33,24 @@ int main(){
             cout << "-1" << endl;
             return 0;
         }
-        for(map<char, int>::iterator it = mp.begin(); it != mp.end(); it++){
-            if(it->second != 0){
-                res += it->first;
-                it->second--;
-                if(it->second == 0)
+        for(auto& val : sorted){
+            if(val.second != 0){
+                res += val.first;
+                val.second--;
+                if(val.second == 0)
                     size--;
             }
         }
         maxVal--;
     }
     cout << res << endl;
+    return res;
+}
+
+int main(){
+    // TODO:
+    string s = "aaaabbbbccccdddddeeefffgghh";
+    int k = 2;
+    seatArrangement(s, k);
     return 0;
 }
