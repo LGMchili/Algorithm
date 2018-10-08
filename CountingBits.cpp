@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 int main(){
-    int num = 5;
+    int num = 15;
     std::vector<int> res(num+1, 0);
     // two methods
 
@@ -12,10 +12,9 @@ int main(){
     }
     // check every bits
     int temp = 1, ans = 0;
-    for(int j = 0; j < 32; j++){
+    for(int j = 0; j < 32; j++, temp <<= 1){
         if(num & temp)
             ans++;
-        temp <<= 1;
     }
     std::cout << res[num] << std::endl;
     std::cout << ans << std::endl;

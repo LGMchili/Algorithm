@@ -1,4 +1,4 @@
-#pragma once
+// #pragma once
 
 
 //using namespace std;
@@ -116,7 +116,7 @@ template<class T>
 void Vector<T>::push_back(const T & v)
 {
  if (my_size >= my_capacity)
-     reserve(my_capacity +5);
+     reserve(my_capacity + 5);
  buffer [my_size++] = v;
 }
 

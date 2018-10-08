@@ -10,16 +10,8 @@ struct TreeNode {
     TreeNode *right;
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
-
-int main(){
+void InOrder(TreeNode* root){
     stack<TreeNode*> stk;
-    TreeNode* root = new TreeNode(2);
-    root->left = new TreeNode(1);
-    root->right = new TreeNode(4);
-    root->right->left = new TreeNode(3);
-    root->right->right = new TreeNode(6);
-    root->right->right->left = new TreeNode(5);
-    root->right->right->right = new TreeNode(7);
     // meet a new node, go to previous if not
     while(root || !stk.empty()){
         // push its left to stack
@@ -36,4 +28,15 @@ int main(){
         root = root->right;
     }
     cout << endl;
+}
+int main(){
+    TreeNode* root = new TreeNode(2);
+    root->left = new TreeNode(1);
+    root->right = new TreeNode(4);
+    root->right->left = new TreeNode(3);
+    root->right->right = new TreeNode(6);
+    root->right->right->left = new TreeNode(5);
+    root->right->right->right = new TreeNode(7);
+    InOrder(root);
+    return 0;
 }

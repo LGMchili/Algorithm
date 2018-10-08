@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     vector<int> vec = {1,3,5,8,9,23,75,80,100,120,129};
-    int l = 0, r = vec.size(), mid;
+    int l = 0, r = vec.size() - 1, mid;
     int tar = 74;
     while(l <= r){
         mid = (l + r) / 2;
